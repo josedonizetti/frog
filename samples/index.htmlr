@@ -1,0 +1,20 @@
+html {
+  head {
+    title "My App"
+  }
+  body {
+    h1 "My App"
+
+    section {
+      "This is cool"
+
+      // Statements
+      {% for i in 0..2 %}
+
+        // Expressions
+        p {{ i }}
+
+      {% end %}
+    }
+  }
+}

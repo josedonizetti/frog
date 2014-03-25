@@ -1,0 +1,30 @@
+class HtmlRuby::Parser
+rule
+  # Parsing starts here.
+  template:
+    tags                        { return Template.new(val[0]) }
+
+  tags:
+    tag                         { return [ val[0] ] }
+  | tags tag                    { val[0].push(val[1]) }
+
+  tag:
+    IDENTIFIER '{' tags '}'     { return Tag.new(val[0], val[2])   }
+  | IDENTIFIER '{' '}'          { return Tag.new(val[0], [])       }
+  | IDENTIFIER value            { return Tag.new(val[0], [val[1]]) }
+  | value
+
+  value:
+    STRING                      { return Text.new(val[0]) }
+  | EXPRESSION                  { return Expression.new(val[0]) }
+  | STATEMENT                   { return Statement.new(val[0]) }
+end
+---- header ----
+require_relative 'template'
+require_relative 'tag'
+require_relative 'text'
+require_relative 'expression'
+require_relative 'statement'
+require_relative 'parser.rex'
+---- inner ----
+---- footer ----
