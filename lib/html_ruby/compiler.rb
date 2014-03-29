@@ -16,29 +16,22 @@ module HtmlRuby
       @code.push(out)
     end
 
-    def execute(args = nil)
-      to_proc.call(args)
+    def execute(locals = {})
+      to_proc(locals.keys).call(locals)
     end
 
-    private
-    def to_proc
-      proc do |args|
-        variables = []
+    def to_proc(local_names)
+      eval <<-EOS
+        proc do |locals|
+          out = []
 
-        unless args.nil?
-         args.each do |k,v|
-           variables.push("#{k} = \"#{v}\"")
-         end
+          #{local_names.map { |name| "#{name} = locals[:#{name}]" }.join("\n")}
+
+          #{@code.join("\n")}
+
+          out.join('')
         end
-
-        variables.push("out = []\n")
-
-        ruby = variables.join("\n") +
-              @code.join("\n") +
-              "\nout.join('')"
-
-        eval(ruby)
-      end
+      EOS
     end
   end
 end
