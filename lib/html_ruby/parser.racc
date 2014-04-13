@@ -9,10 +9,21 @@ rule
   | tags tag                    { val[0].push(val[1]) }
 
   tag:
-    IDENTIFIER '{' tags '}'     { return Tag.new(val[0], val[2])   }
-  | IDENTIFIER '{' '}'          { return Tag.new(val[0], [])       }
-  | IDENTIFIER value            { return Tag.new(val[0], [val[1]]) }
+    IDENTIFIER '{' tags '}'     { return Tag.new(val[0], [], val[2])   }
+  | IDENTIFIER '{' '}'          { return Tag.new(val[0], [], [])       }
+  | IDENTIFIER value            { return Tag.new(val[0], [], [val[1]]) }
+  | IDENTIFIER attributes '{' tags '}'     { return Tag.new(val[0], val[1], val[3])   }
+  | IDENTIFIER attributes '{' '}'          { return Tag.new(val[0], val[1], [])       }
+  | IDENTIFIER attributes value            { return Tag.new(val[0], val[1], [val[2]]) }
   | value
+
+  attributes:
+  | attribute                   { return [ val[0] ] }
+  | attributes attribute        { val[0].push(val[1]) }
+
+  attribute:
+    ID                          { return Attribute.new("id", val[0].gsub("#", "") ) }
+  | CLASS                       { return Attribute.new("class", val[0].gsub(".", "")) }
 
   value:
     STRING                      { return Text.new(val[0]) }

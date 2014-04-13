@@ -5,7 +5,7 @@ module HtmlRuby
     end
 
     def append(out)
-      @code.push("out.push('#{out}')")
+      @code.push("out.push(\"#{out}\")")
     end
 
     def append_expression(out)

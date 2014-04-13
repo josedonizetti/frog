@@ -76,6 +76,12 @@ class Parser < Racc::Parser
       when (text = @ss.scan(/{%.*%}/))
          action { [:STATEMENT, strip(text,2)] }
 
+      when (text = @ss.scan(/\#[a-zA-Z][\w\-]*/))
+         action { [:ID, text] }
+
+      when (text = @ss.scan(/\.[a-zA-Z][\w\-]*/))
+         action { [:CLASS, text] }
+
       when (text = @ss.scan(/[a-zA-Z][\w\-]*/))
          action { [:IDENTIFIER, text] }
 

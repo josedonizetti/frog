@@ -1,4 +1,5 @@
 require "html_ruby/version"
+require 'html_ruby/attribute'
 require 'html_ruby/template'
 require 'html_ruby/tag'
 require 'html_ruby/text'

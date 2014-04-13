@@ -10,17 +10,17 @@ html {
     title "My App"
   }
 
-  body {
-    h1 "My App"
+  body.css_class {
+    h1.css_class "My App"
 
-    section {
+    section#id.class1.class2 {
       "This is cool"
 
       // Ruby code
       {% for i in 0..2 %}
 
         // Expressions
-        p {{ i }}
+        p#css_id {{ i }}
 
       {% end %}
     }

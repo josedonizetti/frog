@@ -14,6 +14,9 @@ rule
   {{.*}}         { [:EXPRESSION, strip(text,2)] }
   {%.*%}         { [:STATEMENT, strip(text,2)] }
 
+  \#{NAME}       { [:ID, text] }
+  \.{NAME}       { [:CLASS, text] }
+
   {NAME}         { [:IDENTIFIER, text] }
 
   .              { [text, text] }
