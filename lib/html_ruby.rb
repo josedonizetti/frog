@@ -8,5 +8,4 @@ require 'html_ruby/parser.tab'
 require 'html_ruby/compiler'
 
 module HtmlRuby
-  # Your code goes here...
 end
