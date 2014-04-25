@@ -19,7 +19,7 @@ html {
       //Ruby code
       - for i in 0..2
 
-        #Expressions
+        //Expressions
         p#css_id #{i}
 
       - end

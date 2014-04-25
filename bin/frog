@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'frog'
+file = ARGV[0]
+
+parser = Frog::Parser.new
+compiler = Frog::Compiler.new
+parser.scan_file(file).compile(compiler)
+puts compiler.execute
