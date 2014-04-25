@@ -61,20 +61,23 @@ class Parser < Racc::Parser
       when (text = @ss.scan(/\s+/))
         ;
 
-      when (text = @ss.scan(/\/\/*/))
+      when (text = @ss.scan(/\/\/.*/))
         ;
 
       when (text = @ss.scan(/\"[^"]*\"/))
-         action { [:STRING, strip(text,1)] }
+         action { [:STRING, strip(text,1,1  )] }
 
       when (text = @ss.scan(/\'[^']*\'/))
-         action { [:STRING, strip(text,1)] }
+         action { [:STRING, strip(text,1,1)] }
 
-      when (text = @ss.scan(/{{.*}}/))
-         action { [:EXPRESSION, strip(text,2)] }
+      when (text = @ss.scan(/-\s.*/))
+         action { [:STATEMENT, strip(text,2,0)] }
 
-      when (text = @ss.scan(/{%.*%}/))
-         action { [:STATEMENT, strip(text,2)] }
+      when (text = @ss.scan(/-.*/))
+         action { [:STATEMENT, strip(text,1,0)] }
+
+      when (text = @ss.scan(/\#{.*}/))
+         action { [:EXPRESSION, strip(text,2,1)] }
 
       when (text = @ss.scan(/\#[a-zA-Z][\w\-]*/))
          action { [:ID, text] }
@@ -99,8 +102,8 @@ class Parser < Racc::Parser
     token
   end  # def _next_token
 
-  def strip(text, size)
-    text.slice(size, text.length - (size * 2)).strip
+  def strip(text, left, right)
+    text.slice(left, text.length - (left + right)).strip
   end
 end # class
 end

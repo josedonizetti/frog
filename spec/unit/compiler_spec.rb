@@ -12,15 +12,15 @@ module Frog
     end
 
     it 'compile expression' do
-      parser.scan_str("html {{ name }}").compile(compiler)
+      parser.scan_str("html \#{ name }").compile(compiler)
       expect(compiler.execute({ name: 'marc' })).to eq("<html>marc</html>")
     end
 
     it 'compile statement' do
       parser.scan_str("html {\n" +
-                     "{% for i in 0..2 %}\n" +
-                     "{{ i }} ','\n" +
-                     "{% end %}\n" +
+                     "- for i in 0..2\n" +
+                     "\#{ i } ','\n" +
+                     "- end\n" +
                    "}").compile(compiler)
 
       expect(compiler.execute).to eq("<html>0,1,2,</html>")

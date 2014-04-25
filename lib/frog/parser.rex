@@ -3,16 +3,17 @@ class Parser
 macro
   BLANK          \s+
   NAME           [a-zA-Z][\w\-]*
-  COMMENTS       \/\/*
+  COMMENTS       \/\/.*
 rule
-  {BLANK}        //ignore comments
+  {BLANK}        //ignore blanks
   {COMMENTS}     //ignore comments
 
-  \"[^"]*\"      { [:STRING, strip(text,1)] }
-  \'[^']*\'      { [:STRING, strip(text,1)] }
+  \"[^"]*\"      { [:STRING, strip(text,1,1  )] }
+  \'[^']*\'      { [:STRING, strip(text,1,1)] }
 
-  {{.*}}         { [:EXPRESSION, strip(text,2)] }
-  {%.*%}         { [:STATEMENT, strip(text,2)] }
+  -\s.*          { [:STATEMENT, strip(text,2,0)] }
+  -.*            { [:STATEMENT, strip(text,1,0)] }
+  \#{.*}         { [:EXPRESSION, strip(text,2,1)] }
 
   \#{NAME}       { [:ID, text] }
   \.{NAME}       { [:CLASS, text] }
@@ -22,8 +23,8 @@ rule
   .              { [text, text] }
 
 inner
-  def strip(text, size)
-    text.slice(size, text.length - (size * 2)).strip
+  def strip(text, left, right)
+    text.slice(left, text.length - (left + right)).strip
   end
 end
 end

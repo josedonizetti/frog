@@ -16,7 +16,7 @@ module Frog
     end
 
     it "parse expression" do
-      input = "html {{ name }}"
+      input = "html \#{ name }"
 
       expected = Template.new([
         Tag.new("html", [], [

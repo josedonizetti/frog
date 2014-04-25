@@ -9,12 +9,14 @@ html {
       "This is cool"
 
       // Statements
-      {% for i in 0..2 %}
+      - for i in 0..2
 
         // Expressions
-        p {{ i }}
+        p {
+          #{i}
+        }
 
-      {% end %}
+      - end
     }
   }
 }

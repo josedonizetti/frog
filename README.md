@@ -16,13 +16,13 @@ html {
     section#id.class1.class2 {
       "This is cool"
 
-      // Ruby code
-      {% for i in 0..2 %}
+      //Ruby code
+      - for i in 0..2
 
-        // Expressions
-        p#css_id {{ i }}
+        #Expressions
+        p#css_id #{i}
 
-      {% end %}
+      - end
     }
   }
 }
