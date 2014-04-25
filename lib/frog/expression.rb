@@ -1,4 +1,4 @@
-module HtmlRuby
+module Frog
   class Expression
     def initialize(value)
       @value = value

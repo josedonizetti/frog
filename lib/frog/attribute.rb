@@ -1,4 +1,4 @@
-module HtmlRuby
+module Frog
   class Attribute
 
     attr_reader :name, :value

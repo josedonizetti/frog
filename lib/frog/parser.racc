@@ -1,4 +1,4 @@
-class HtmlRuby::Parser
+class Frog::Parser
 rule
   # Parsing starts here.
   template:

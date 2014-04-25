@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'html_ruby/version'
+require 'frog/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "html_ruby"
-  spec.version       = HtmlRuby::VERSION
+  spec.name          = "frog"
+  spec.version       = Frog::VERSION
   spec.authors       = ["Jose Donizetti"]
   spec.email         = ["jdbjunior@gmail.com"]
   spec.summary       = %q{Simple HTML template language.}

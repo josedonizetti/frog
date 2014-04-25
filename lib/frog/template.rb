@@ -1,4 +1,4 @@
-module HtmlRuby
+module Frog
   class Template
     def initialize(tags)
       @tags = tags

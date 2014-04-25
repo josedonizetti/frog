@@ -7,8 +7,8 @@ task default: :test
 
 desc "Compiles rex and racc"
 task :compile do
-  sh 'rex lib/html_ruby/parser.rex'
-  sh 'racc lib/html_ruby/parser.racc'
+  sh 'rex lib/frog/parser.rex'
+  sh 'racc lib/frog/parser.racc'
 end
 
 desc "Compiles rex and racc and then run RSpec code examples"

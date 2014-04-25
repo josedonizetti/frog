@@ -1,4 +1,4 @@
-#HtmlRuby
+#Frog
 
 Template language which compiles to html. Support ruby code.
 Implemented with raac, and rexical.

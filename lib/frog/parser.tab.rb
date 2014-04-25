@@ -12,7 +12,7 @@ require_relative 'text'
 require_relative 'expression'
 require_relative 'statement'
 require_relative 'parser.rex'
-module HtmlRuby
+module Frog
   class Parser < Racc::Parser
 
 module_eval(<<'...end parser.racc/module_eval...', 'parser.racc', 41)
@@ -265,6 +265,6 @@ def _reduce_none(val, _values, result)
 end
 
   end   # class Parser
-  end   # module HtmlRuby
+  end   # module Frog
 
 

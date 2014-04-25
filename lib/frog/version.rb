@@ -1,3 +1,3 @@
-module HtmlRuby
+module Frog
   VERSION = "0.0.1"
 end

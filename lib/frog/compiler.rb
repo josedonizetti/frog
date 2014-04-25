@@ -1,4 +1,4 @@
-module HtmlRuby
+module Frog
   class Compiler
     def initialize
       @code = []

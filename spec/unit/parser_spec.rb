@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module HtmlRuby
+module Frog
 
   describe Parser do
     it "parse tag" do
