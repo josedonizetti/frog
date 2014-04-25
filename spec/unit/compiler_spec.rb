@@ -46,5 +46,16 @@ module Frog
       expect(compiler.execute).to eq("<html class='reset purple' id='green'></html>")
     end
 
+    it "should support attributes" do
+      input = "table(border=\"1\" style=\"width:300px\" custom-one=\"custom\") { }"
+      parser.scan_str(input).compile(compiler)
+      expect(compiler.execute).to eq("<table border='1' style='width:300px' custom-one='custom'></table>")
+    end
+
+    it "should support attributes" do
+      input = "table#table(border=\"1\" style=\"width:300px\" custom-one=\"custom\") { }"
+      parser.scan_str(input).compile(compiler)
+      expect(compiler.execute).to eq("<table id='table' border='1' style='width:300px' custom-one='custom'></table>")
+    end
   end
 end

@@ -12,9 +12,7 @@ html {
       - for i in 0..2
 
         // Expressions
-        p {
-          #{i}
-        }
+        p#css_id(style="color:blue") #{i}
 
       - end
     }

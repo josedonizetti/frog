@@ -12,18 +12,32 @@ rule
     IDENTIFIER '{' tags '}'     { return Tag.new(val[0], [], val[2])   }
   | IDENTIFIER '{' '}'          { return Tag.new(val[0], [], [])       }
   | IDENTIFIER value            { return Tag.new(val[0], [], [val[1]]) }
-  | IDENTIFIER attributes '{' tags '}'     { return Tag.new(val[0], val[1], val[3])   }
-  | IDENTIFIER attributes '{' '}'          { return Tag.new(val[0], val[1], [])       }
-  | IDENTIFIER attributes value            { return Tag.new(val[0], val[1], [val[2]]) }
+  | IDENTIFIER special_attributes '{' tags '}'     { return Tag.new(val[0], val[1], val[3])   }
+  | IDENTIFIER special_attributes '{' '}'          { return Tag.new(val[0], val[1], [])       }
+  | IDENTIFIER special_attributes value            { return Tag.new(val[0], val[1], [val[2]]) }
+  | IDENTIFIER '(' attributes ')' '{' tags '}' { return Tag.new(val[0], val[2], val[5])   }
+  | IDENTIFIER '(' attributes ')' '{' '}'      { return Tag.new(val[0], val[2], [])       }
+  | IDENTIFIER '(' attributes ')' value        { return Tag.new(val[0], val[2], [val[4]]) }
+  | IDENTIFIER special_attributes '(' attributes ')' '{' tags '}' { return Tag.new(val[0], val[1] + val[3], val[6])   }
+  | IDENTIFIER special_attributes '(' attributes ')' '{' '}'      { return Tag.new(val[0], val[1] + val[3], [])       }
+  | IDENTIFIER special_attributes '(' attributes ')' value        { return Tag.new(val[0], val[1] + val[3], [val[5]]) }
   | value
+
+
+  special_attributes:
+  | special_attribute                       { return [ val[0] ] }
+  | special_attributes special_attribute    { val[0].push(val[1]) }
+
+  special_attribute:
+    ID                          { return Attribute.new("id", val[0].gsub("#", "") ) }
+  | CLASS                       { return Attribute.new("class", val[0].gsub(".", "")) }
 
   attributes:
   | attribute                   { return [ val[0] ] }
   | attributes attribute        { val[0].push(val[1]) }
 
   attribute:
-    ID                          { return Attribute.new("id", val[0].gsub("#", "") ) }
-  | CLASS                       { return Attribute.new("class", val[0].gsub(".", "")) }
+  | IDENTIFIER '=' STRING         { return Attribute.new(val[0], val[2]) }
 
   value:
     STRING                      { return Text.new(val[0]) }

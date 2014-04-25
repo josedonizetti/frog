@@ -20,7 +20,7 @@ html {
       - for i in 0..2
 
         //Expressions
-        p#css_id #{i}
+        p#css_id(style="color:blue") #{i}
 
       - end
     }

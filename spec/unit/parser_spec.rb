@@ -83,6 +83,20 @@ module Frog
 
       expect(subject.scan_str(input)).to eq(expected)
     end
+
+    it "should support attributes" do
+      input = "table#table(border=\"1\" style=\"width:300px\" custom-one=\"custom\") { }"
+
+      expected = Template.new([
+        Tag.new('table',[
+            Attribute.new("id", "table"),
+            Attribute.new("border", "1"),
+            Attribute.new("style", "width:300px"),
+            Attribute.new("custom-one", "custom")], [])
+      ])
+
+      expect(subject.scan_str(input)).to eq(expected)
+    end
   end
 
 end
