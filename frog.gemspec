@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "racc"
   spec.add_dependency "rexical"
+  spec.add_dependency "tilt"
 
   spec.add_development_dependency "bundler", "~> 1.6.0.rc2"
   spec.add_development_dependency "rake"
