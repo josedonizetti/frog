@@ -17,7 +17,11 @@ module Frog
     end
 
     def execute(locals = {})
-      to_proc(locals.keys).call(locals)
+      locals_symbol_keys =  {}
+      locals.each do |k,v|
+        locals_symbol_keys[k.to_sym] = v
+      end
+      to_proc(locals_symbol_keys.keys).call(locals_symbol_keys)
     end
 
     def to_proc(local_names)
