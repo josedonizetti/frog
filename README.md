@@ -3,7 +3,7 @@
 Template language which compiles to html. Support ruby code.
 Implemented with raac, and rexical.
 
-#Example
+##Syntax
 ```
 html {
   head {
@@ -28,6 +28,27 @@ html {
 }
 
 ```
+
+## Installation
+
+**Frog**'s installation is pretty standard:
+
+```
+$ gem install frog
+```
+
+If you'd rather install Frog using `bundler`:
+
+```
+gem 'frog'
+```
+
+## Basic Usage
+
+Running `frog` passing a template to compile it:
+
+```
+$ frog path/to/template.frog
 
 LICENSE
 -------
