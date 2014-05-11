@@ -64,5 +64,7 @@ Want to contribute? Great!
 LICENSE
 -------
 
-Tilt is Copyright (c) 2014 [Jose Donizetti](https://github.com/josedonizetti) and
+#LICENSE
+
+Frog is Copyright (c) 2014 [Jose Donizetti](https://github.com/josedonizetti) and
 distributed under the MIT license. See the `LICENSE` file for more info.
