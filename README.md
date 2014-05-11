@@ -62,11 +62,11 @@ Want to contribute? Great!
 5. Open a [Pull Request][1]
 
 
-#LICENSE
+##LICENSE
 
 Frog is Copyright (c) 2014 [Jose Donizetti](https://github.com/josedonizetti) and
 distributed under the MIT license. See the `LICENSE` file for more info.
 
-#Credits
+##Credits
 
 Frog was born inside the [Great Club of Code](http://www.greatcodeclub.com/).
