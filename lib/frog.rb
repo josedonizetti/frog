@@ -8,6 +8,7 @@ require 'frog/statement'
 require 'frog/parser.tab'
 require 'frog/compiler'
 require 'frog/tilt_template'
+require 'frog/rails_template' if defined?(Rails)
 
 module Frog
 end
