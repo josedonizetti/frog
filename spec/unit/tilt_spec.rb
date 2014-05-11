@@ -2,8 +2,14 @@ require 'spec_helper'
 
 describe Tilt::FrogTemplate do
 
-  it "registered for '.liquid' files" do
+  it "registered for '.frog' files" do
     expect(Tilt['frog']).to eq(Tilt::FrogTemplate)
+  end
+
+
+  it "preparing and evaluating simple text" do
+    template = Tilt::FrogTemplate.new { |t| "'Hello World!'" }
+    expect(template.render).to eq("Hello World!")
   end
 
   it "preparing and evaluating templates on #render" do

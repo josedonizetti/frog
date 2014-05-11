@@ -3,6 +3,16 @@ require 'spec_helper'
 module Frog
 
   describe Parser do
+    it "parse simple text" do
+      input = "'hi'"
+
+      expected = Template.new([
+        Text.new("hi")
+      ])
+
+      expect(subject.scan_str(input)).to eq(expected)
+    end
+
     it "parse tag" do
       input = "html 'hi'"
 

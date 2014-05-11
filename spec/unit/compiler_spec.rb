@@ -6,6 +6,11 @@ module Frog
     let(:compiler) { Compiler.new }
     let(:parser) { Parser.new }
 
+    it "compile simple text" do
+      parser.scan_str("'hi'").compile(compiler)
+      expect(compiler.execute).to eq("hi")
+    end
+
     it 'compile tag' do
       parser.scan_str("html 'hi'").compile(compiler)
       expect(compiler.execute).to eq("<html>hi</html>")
