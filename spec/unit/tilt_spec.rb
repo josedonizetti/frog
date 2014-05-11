@@ -6,7 +6,6 @@ describe Tilt::FrogTemplate do
     expect(Tilt['frog']).to eq(Tilt::FrogTemplate)
   end
 
-
   it "preparing and evaluating simple text" do
     template = Tilt::FrogTemplate.new { |t| "'Hello World!'" }
     expect(template.render).to eq("Hello World!")

@@ -7,7 +7,7 @@ require 'frog/expression'
 require 'frog/statement'
 require 'frog/parser.tab'
 require 'frog/compiler'
-require 'frog/tilt'
+require 'frog/tilt_template'
 
 module Frog
 end
