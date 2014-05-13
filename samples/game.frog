@@ -1,0 +1,12 @@
+html(lang="en"){
+  head {
+    meta(charset="utf-8")
+    title= "Game"
+    meta(name="viewport" content="width=device-width, intial-scale=1.0")
+  }
+
+  body {
+    canvas(tabindex="1" width="640" height="280")
+    script(src="game.js")
+  }
+}
