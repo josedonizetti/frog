@@ -62,5 +62,17 @@ module Frog
       parser.scan_str(input).compile(compiler)
       expect(compiler.execute).to eq("<table id='table' border='1' style='width:300px' custom-one='custom'></table>")
     end
+
+    it "should compile identifier=string" do
+      input = "title= \"Title\""
+      parser.scan_str(input).compile(compiler)
+      expect(compiler.execute).to eq("<title>Title</title>")
+    end
+
+    it "should compile meta(charset=\"utf-8\")" do
+      input = "meta(charset=\"utf-8\")"
+      parser.scan_str(input).compile(compiler)
+      expect(compiler.execute).to eq("<meta charset='utf-8'></meta>")
+    end
   end
 end
