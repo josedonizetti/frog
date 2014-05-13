@@ -108,7 +108,7 @@ module Frog
       expect(subject.scan_str(input)).to eq(expected)
     end
 
-    it "parse identifier=string" do
+    it "should parse identifier=string" do
       input = "title= \"Title\""
 
       expected = Template.new([
@@ -119,6 +119,19 @@ module Frog
 
       expect(subject.scan_str(input)).to eq(expected)
     end
+
+    it "should parse meta(charset=\"utf-8\")" do
+      input = "meta(charset=\"utf-8\")"
+
+      expected = Template.new([
+        Tag.new("meta", [
+          Attribute.new("charset", "utf-8"),
+        ], [])
+      ])
+
+      expect(subject.scan_str(input)).to eq(expected)
+    end
+
   end
 
 end
