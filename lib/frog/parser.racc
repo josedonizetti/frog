@@ -12,6 +12,7 @@ rule
     IDENTIFIER '{' tags '}'     { return Tag.new(val[0], [], val[2])   }
   | IDENTIFIER '{' '}'          { return Tag.new(val[0], [], [])       }
   | IDENTIFIER value            { return Tag.new(val[0], [], [val[1]]) }
+  | IDENTIFIER '=' value        { return Tag.new(val[0], [], [val[2]]) }
   | IDENTIFIER special_attributes '{' tags '}'     { return Tag.new(val[0], val[1], val[3])   }
   | IDENTIFIER special_attributes '{' '}'          { return Tag.new(val[0], val[1], [])       }
   | IDENTIFIER special_attributes value            { return Tag.new(val[0], val[1], [val[2]]) }

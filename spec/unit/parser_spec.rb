@@ -107,6 +107,18 @@ module Frog
 
       expect(subject.scan_str(input)).to eq(expected)
     end
+
+    it "parse identifier=string" do
+      input = "title= \"Title\""
+
+      expected = Template.new([
+        Tag.new("title", [], [
+          Text.new("Title")
+        ])
+      ])
+
+      expect(subject.scan_str(input)).to eq(expected)
+    end
   end
 
 end
