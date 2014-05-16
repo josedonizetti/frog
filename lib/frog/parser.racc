@@ -16,6 +16,7 @@ rule
   | IDENTIFIER special_attributes '{' tags '}'     { return Tag.new(val[0], val[1], val[3])   }
   | IDENTIFIER special_attributes '{' '}'          { return Tag.new(val[0], val[1], [])       }
   | IDENTIFIER special_attributes value            { return Tag.new(val[0], val[1], [val[2]]) }
+  | IDENTIFIER special_attributes                  { return Tag.new(val[0], val[1], []) }
   | IDENTIFIER '(' attributes ')' '{' tags '}' { return Tag.new(val[0], val[2], val[5])   }
   | IDENTIFIER '(' attributes ')' '{' '}'      { return Tag.new(val[0], val[2], [])       }
   | IDENTIFIER '(' attributes ')' value        { return Tag.new(val[0], val[2], [val[4]]) }
@@ -23,6 +24,7 @@ rule
   | IDENTIFIER special_attributes '(' attributes ')' '{' tags '}' { return Tag.new(val[0], val[1] + val[3], val[6])   }
   | IDENTIFIER special_attributes '(' attributes ')' '{' '}'      { return Tag.new(val[0], val[1] + val[3], [])       }
   | IDENTIFIER special_attributes '(' attributes ')' value        { return Tag.new(val[0], val[1] + val[3], [val[5]]) }
+  | IDENTIFIER special_attributes '(' attributes ')'              { return Tag.new(val[0], val[1] + val[3], []) }
   | value
 
 

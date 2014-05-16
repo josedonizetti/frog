@@ -6,7 +6,7 @@ html(lang="en"){
   }
 
   body {
-    canvas(tabindex="1" width="640" height="280")
+    canvas#canvas(tabindex="1" width="640" height="280")
     script(src="game.js")
   }
 }

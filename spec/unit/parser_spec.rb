@@ -132,6 +132,23 @@ module Frog
       expect(subject.scan_str(input)).to eq(expected)
     end
 
+
+    it "should parse canvas#canvas(tabindex=\"1\" width=\"640\" height=\"280\")" do
+      input = "canvas#canvas(tabindex=\"1\" width=\"640\" height=\"280\")"
+
+      expected = Template.new([
+        Tag.new("canvas",
+        [
+          Attribute.new("id", "canvas"),
+          Attribute.new("tabindex", "1"),
+          Attribute.new("width", "640"),
+          Attribute.new("height", "280"),
+        ], [])
+      ])
+
+      expect(subject.scan_str(input)).to eq(expected)
+    end
+
   end
 
 end
