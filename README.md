@@ -51,6 +51,8 @@ Running `frog` passing a template to compile it:
 $ frog path/to/template.frog
 ```
 
+[Atom Support.](https://github.com/josedonizetti/atom-language-frog)
+
 ## Contributing
 
 Want to contribute? Great!
